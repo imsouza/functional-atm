@@ -111,7 +111,8 @@ def mostrarNotas(n100=0, n50=0, n20=0, n10=0, n5=0, n2=0, n1=0):
     return mostrarNotas(n100, n50, n20, n10, n5, n2, n1-1)
 
 
-def verificarSaque(n100, n50, n20, n10, n5, n2, n1, valor, valorSq=0, v100=0, v50=0, v20=0, v10=0, v5=0, v2=0, v1=0):
+def verificarSaque(n100, n50, n20, n10, n5, n2, n1, valor, valorSq=0, 
+v100=0, v50=0, v20=0, v10=0, v5=0, v2=0, v1=0):
   """
   Verifica e calcula as cada nota para realização do eventual saque do usuário.
   """
@@ -120,28 +121,37 @@ def verificarSaque(n100, n50, n20, n10, n5, n2, n1, valor, valorSq=0, v100=0, v5
     #o valorSq for menor, ele será acumulado com a respectiva nota, fazendo a condição parar quando o valorSq for 
     #maior ou igual ao valor.
     if valor - valorSq >= 100 and n100 > 0:
-      #Para realização do saque será decrementado 1 da respectiva nota, o valorSq será acumulado recursivamente e
-      #será usado uma variável auxiliadora com inicial da letra 'v', como por exemplo a variável v100 que assim como
-      #todas as outras auxiliadoras tem o papel de incrementar +1, fazendo um controle correto entre as notas que são
+      #Para realização do saque será decrementado 1 da respectiva nota, o valorSq será 
+      #acumulado recursivamente e será usado uma variável auxiliadora com inicial da 
+      #letra 'v', como por exemplo a variável v100 que assim como todas as outras auxiliadoras 
+      #tem o papel de incrementar +1, fazendo um controle correto entre as notas que são
       #sacadas e os valores que serão mostrados na tela das notas que sobraram.
-      return verificarSaque(n100-1, n50, n20, n10, n5, n2, n1, valor, valorSq+100, v100+1, v50, v20, v10, v5, v2, v1)
+      return verificarSaque(n100-1, n50, n20, n10, n5, n2, n1, 
+      valor, valorSq+100, v100+1, v50, v20, v10, v5, v2, v1)
     elif valor - valorSq >= 50 and n50 > 0:
-      return verificarSaque(n100, n50-1, n20, n10, n5, n2, n1, valor, valorSq+50, v100, v50+1, v20, v10, v5, v2, v1)
+      return verificarSaque(n100, n50-1, n20, n10, n5, n2, n1, 
+      valor, valorSq+50, v100, v50+1, v20, v10, v5, v2, v1)
     elif valor - valorSq >= 20 and n20 > 0:
-      return verificarSaque(n100, n50, n20-1, n10, n5, n2, n1, valor, valorSq+20, v100, v50, v20+1, v10, v5, v2, v1)
+      return verificarSaque(n100, n50, n20-1, n10, n5, n2, n1, 
+      valor, valorSq+20, v100, v50, v20+1, v10, v5, v2, v1)
     elif valor - valorSq >= 10 and n10 > 0:
-      return verificarSaque(n100, n50, n20, n10-1, n5, n2, n1, valor, valorSq+10, v100, v50, v20, v10+1, v5, v2, v1)
+      return verificarSaque(n100, n50, n20, n10-1, n5, n2, n1, 
+      valor, valorSq+10, v100, v50, v20, v10+1, v5, v2, v1)
     elif valor - valorSq >= 5 and n5 > 0:
-      return verificarSaque(n100, n50, n20, n10, n5-1, n2, n1, valor, valorSq+5, v100, v50, v20, v10, v5+1, v2, v1)
+      return verificarSaque(n100, n50, n20, n10, n5-1, n2, n1, 
+      valor, valorSq+5, v100, v50, v20, v10, v5+1, v2, v1)
     elif valor - valorSq >= 2 and n2 > 0:
-      return verificarSaque(n100, n50, n20, n10, n5, n2-1, n1, valor, valorSq+2, v100, v50, v20, v10, v5, v2+1, v1)
+      return verificarSaque(n100, n50, n20, n10, n5, n2-1, n1, 
+      valor, valorSq+2, v100, v50, v20, v10, v5, v2+1, v1)
     elif valor - valorSq >= 1 and n1 > 0:
-      return verificarSaque(n100, n50, n20, n10, n5, n2, n1-1, valor, valorSq+1, v100, v50, v20, v10, v5, v2, v1+1)
+      return verificarSaque(n100, n50, n20, n10, n5, n2, n1-1, 
+      valor, valorSq+1, v100, v50, v20, v10, v5, v2, v1+1)
     else:
       print("Não temos notas suficiente para esse saque")
       esc = str(input("--> Enter para continuar..."))
       if not esc:
-        return n100 + v100, n50 + v50, n20 + v20, n10 + v10, n5 + v5, n2 + v2, n1 + v1
+        return n100 + v100, n50 + v50, n20 + v20, n10 + v10, 
+        n5 + v5, n2 + v2, n1 + v1
   else:
     print("Pegue seu dinheiro:")
     mostrarNotas(v100, v50, v20, v10, v5, v2, v1)
